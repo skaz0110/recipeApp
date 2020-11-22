@@ -1,18 +1,27 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        新規レシピ作成
+      </h1>
+    </div>
+  </div>
+</section>
 
-<%= form_for @recipe do |f| %>
+<div style="margin-top: 50px;">
+    <%= form_for @recipe do |f| %>
 
-    <%= f.label :title%>
-    <%= f.text_field :title%>
+        <%= f.label :名前%>
+        <%= f.text_field :title%>
 
-    <%= f.label :body%>
-    <%= f.text_area :body%>
+        <%= f.label :作り方%>
+        <%= f.text_area :body%>
 
-    <%= f.label :image%>
-    <%= f.attachment_field :image%>
+        <%= f.label :写真%>
+        <%= f.attachment_field :image%>
 
-    <%= f.submit %>
+        <%= f.submit "投稿"%>
 
-<% end %>
+    <% end %>
+</div>
 

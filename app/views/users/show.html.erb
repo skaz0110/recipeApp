@@ -48,3 +48,39 @@
         </div>
     </div>
 </section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @user.recipes.each do |recipe| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= link_to recipe_path(recipe) do%>
+                    <%= attachment_image_tag recipe, :image %>
+                <% end %>
+              </figure>
+            </div>
+                <div class="card-content">
+                    <div class="media">
+                    <div class="media-content">
+                        レシピ名：<%= recipe.title%> 
+                    </div>       
+                    <div>            
+                        <%= link_to  "詳細" , recipe_path(recipe),class: "panel-block"%><br>
+                        <% if current_user.id == @user.id %>
+                            <%= link_to  "編集" , edit_recipe_path(recipe) ,class: "panel-block"%><br>
+                            <%= link_to  "削除" , recipe_path(recipe), method: :delete ,data: { confirm: '削除しますか？' } ,class: "panel-block" %>
+                        <% end %>
+                    </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
