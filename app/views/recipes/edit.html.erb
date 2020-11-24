@@ -7,18 +7,28 @@
     </div>
   </div>
 </section>
+<% if @recipe.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_for @recipe do |f|%>
 
-<%= f.label :名前%>
-<%= f.text_field :title %>
+  <%= f.label :名前%>
+  <%= f.text_field :title %>
 
-<%= f.label :作り方%>
-<%= f.text_area :body %>
+  <%= f.label :作り方%>
+  <%= f.text_area :body %>
 
-<%= f.label :写真%>
-<%= f.attachment_field :image %>
+  <%= f.label :写真%>
+  <%= f.attachment_field :image %>
 
-<%= f.submit "編集",class:"button"%>
+  <%= f.submit "編集",class:"button"%>
 
 <% end %>
